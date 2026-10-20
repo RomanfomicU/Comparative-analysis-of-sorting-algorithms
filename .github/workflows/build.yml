@@ -1,0 +1,35 @@
+name: Build article
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install LaTeX, fonts and Python
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            make texlive-xetex texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-lang-cyrillic fonts-lmodern \
+            fonts-liberation python3-matplotlib
+
+      - name: Install pandoc
+        run: |
+          wget -q https://github.com/jgm/pandoc/releases/download/3.12.1/pandoc-3.12.1-1-amd64.deb
+          sudo dpkg -i pandoc-3.12.1-1-amd64.deb
+          pandoc --version | head -1
+
+      - name: Build PDF, DOCX and HTML
+        run: make all
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: article
+          path: build/

@@ -1,0 +1,35 @@
+---
+title: "Сравнительный анализ алгоритмов сортировки: теоретические оценки и эксперимент"
+author: "Роман Фомичев"
+date: "2026"
+lang: ru-RU
+abstract: |
+  В статье рассматриваются четыре классических алгоритма сортировки сравнениями:
+  сортировка вставками, слиянием, быстрая и пирамидальная. Приводятся теоретические
+  оценки их трудоёмкости и нижняя граница числа сравнений. Оценки проверяются
+  экспериментально: для каждого алгоритма измерены время работы и число сравнений
+  на случайных массивах размером от 250 до 4000 элементов.
+
+# Оглавление
+toc-title: "Содержание"
+toc-depth: 2
+
+# Список литературы
+bibliography: references.bib
+csl: styles/gost-r-7-0-5-2008-numeric.csl
+link-citations: true
+
+# Параметры PDF (LaTeX)
+documentclass: article
+fontsize: 12pt
+linestretch: 1.25
+geometry:
+  - a4paper
+  - margin=2.5cm
+colorlinks: true
+header-includes:
+  - \usepackage{caption}
+  - \captionsetup{labelformat=empty}
+  - \usepackage{float}
+  - \floatplacement{figure}{H}
+---
