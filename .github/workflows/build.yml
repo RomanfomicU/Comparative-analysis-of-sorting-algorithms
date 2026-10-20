@@ -15,9 +15,9 @@ jobs:
       - name: Install LaTeX, fonts and Python
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
+          sudo apt-get install -y \
             make texlive-xetex texlive-latex-recommended texlive-latex-extra \
-            texlive-fonts-recommended texlive-lang-cyrillic fonts-lmodern \
+            texlive-fonts-recommended texlive-lang-cyrillic lmodern fonts-lmodern \
             fonts-liberation python3-matplotlib
 
       - name: Install pandoc
