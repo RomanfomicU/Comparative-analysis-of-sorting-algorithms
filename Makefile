@@ -8,9 +8,17 @@
 #   make clean    — удалить результаты сборки
 
 PANDOC  ?= pandoc
+
+# На Windows интерпретатор называется python, а шрифты Liberation обычно не установлены
+ifeq ($(OS),Windows_NT)
+PYTHON  ?= python
+FONT    ?= Times New Roman
+MONO    ?= Consolas
+else
 PYTHON  ?= python3
 FONT    ?= Liberation Serif
 MONO    ?= Liberation Mono
+endif
 
 BUILD   := build
 NAME    := article

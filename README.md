@@ -49,11 +49,10 @@ make bench      # заново провести замеры (перезапиш
 winget install JohnMacFarlane.Pandoc ezwinports.make
 ```
 
-и сборка с системным шрифтом и интерпретатором `python`:
-
-```bash
-make PYTHON=python FONT="Times New Roman" MONO=Consolas
-```
+Запускать `make` нужно из Git Bash. На Windows Makefile сам выбирает
+интерпретатор `python` и шрифты Times New Roman / Consolas, в Linux —
+`python3` и Liberation Serif / Mono. Любое значение можно переопределить,
+например `make FONT="Arial"`.
 
 Оглавление в DOCX — это поле Word: при открытии файла Word предложит обновить
 поля, нужно согласиться.
