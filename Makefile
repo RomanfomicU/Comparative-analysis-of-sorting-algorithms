@@ -9,7 +9,6 @@
 
 PANDOC  ?= pandoc
 
-# На Windows интерпретатор называется python, а шрифты Liberation обычно не установлены
 ifeq ($(OS),Windows_NT)
 PYTHON  ?= python
 FONT    ?= Times New Roman
