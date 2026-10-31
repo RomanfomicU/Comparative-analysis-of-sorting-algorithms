@@ -19,10 +19,14 @@
 │   ├── 03-experiment.md
 │   ├── 04-conclusion.md
 │   └── 05-references.md
-├── data/results.csv         # результаты замеров
+├── data/
+│   ├── results.csv          # результаты замеров
+│   └── complexity.csv       # таблица теоретических сложностей
 ├── scripts/
 │   ├── benchmark.py         # реализация алгоритмов и замеры → data/results.csv
-│   └── plot.py              # построение рисунков → img/*.png
+│   ├── plot.py              # построение рисунков → img/*.png
+│   ├── tables.py            # CSV-файлы таблиц по результатам замеров → tables/*.csv
+│   └── assemble.py          # склейка разделов, вставка таблиц из CSV и их нумерация
 ├── styles/
 │   ├── gost-r-7-0-5-2008-numeric.csl   # стиль библиографии
 │   └── web.css              # стиль HTML-версии
@@ -56,6 +60,22 @@ winget install JohnMacFarlane.Pandoc ezwinports.make
 
 Оглавление в DOCX — это поле Word: при открытии файла Word предложит обновить
 поля, нужно согласиться.
+
+## Таблицы
+
+Таблицы не пишутся в markdown вручную, а берутся из CSV-файлов. В тексте
+таблица вставляется так:
+
+```markdown
+Результаты приведены в таблице @tbl:time.
+
+!table[Среднее время сортировки, мс](tables/time.csv){#tbl:time}
+```
+
+Скрипт `scripts/assemble.py` склеивает разделы из `src/` в `build/article.md`,
+заменяет такие строки таблицами из CSV (первая строка — заголовок), нумерует
+таблицы по порядку и заменяет ссылки `@tbl:...` номерами. Pandoc собирает
+документы уже из `build/article.md`.
 
 ## Автоматическая сборка
 
